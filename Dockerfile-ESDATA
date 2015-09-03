@@ -1,0 +1,4 @@
+FROM elasticsearch
+MAINTAINER Rob Cameron <rwcameron@gmail.com>
+VOLUME /usr/share/elasticsearch/data
+RUN /bin/true
