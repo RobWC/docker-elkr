@@ -12,9 +12,6 @@ kibana:
     - 5601:5601
   links:
     -  elasticsearch:elasticsearch
-esdata:
-  container_name: esdata
-  dockerfile: Dockerfile-ESDATA
 elasticsearch:
   image: elasticsearch
   restart: always
