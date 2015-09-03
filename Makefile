@@ -3,7 +3,7 @@
 all: volumes compose
 
 compose:
-	docker-compose up
+	docker-compose up -d
 	
 volumes:
 	docker create -v /usr/share/elasticsearch/data --name esdata elasticsearch /bin/true
