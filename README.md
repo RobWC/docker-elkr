@@ -17,7 +17,7 @@ docker create -v /usr/share/elasticsearch/data --name esdata elasticsearch /bin/
 docker run --restart=always -d --volumes-from esdata --name elasticsearch elasticsearch elasticsearch --node.name="ESNode" --cluster.name=escluster
 
 #logstash central
-docker run --restart=always -d --link elasticsearch:es --name logstash_central -p 514:5514 -p 514:5514/udp logstash /docker-entrypoint.sh logstash -e "input { syslog { port => 5514 type => syslog } } output { stdout { } elasticsearch { cluster => "escluster" host => [\"es\"] }}"
+docker run --restart=always -d --link elasticsearch:es --name logstash_central -p 514:5514 -p 514:5514/udp logstash /docker-entrypoint.sh logstash -e "input { syslog { port => 5514 type => syslog } } output { stdout { } elasticsearch { cluster => \"escluster\" hosts => [\"es\"] }}"
 
 #kibana
 docker run --restart=always --name kibana --link elasticsearch:elasticsearch -p 5601:5601 -d kibana
